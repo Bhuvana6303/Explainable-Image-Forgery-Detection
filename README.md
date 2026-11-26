@@ -1,66 +1,80 @@
 # Image Forgery Detection
 
-## Project Overview
+An Explainable Deep Learning Approach Using EfficientNetB0 and Grad-CAM
 
-Image Forgery Detection is a deep learning-based application designed to classify digital images as **Real** or **Forged**. The project uses EfficientNetB0 with transfer learning for image classification and Grad-CAM (Gradient-weighted Class Activation Mapping) to visualize the regions that influence the model's predictions.
+## 1. Project Overview
 
-The application provides an interactive interface using Streamlit, allowing users to upload images and view prediction results along with Grad-CAM visualizations.
+Image Forgery Detection is a deep learning-based project that identifies whether a digital image is Real or Forged.
 
-## Problem Statement
+The project uses EfficientNetB0 with transfer learning for image classification and Grad-CAM (Gradient-weighted Class Activation Mapping) to visualize the image regions that influence the model's predictions.
 
-Digital image manipulation has become increasingly common, making it difficult to distinguish authentic images from forged images. This project aims to develop an automated image classification system that helps identify potentially manipulated images using deep learning techniques.
+An interactive web interface is developed using Streamlit, allowing users to upload images and view classification results with visual explanations.
 
-## Objectives
+## 2. Problem Statement
+
+With the increasing use of digital image editing tools, manipulated images are becoming difficult to distinguish from authentic images.
+
+This project aims to develop an automated image classification system that can identify potentially forged images using deep learning techniques and provide visual explanations of its predictions.
+
+## 3. Objectives
 
 - Develop a deep learning model to classify images as Real or Forged.
 - Implement EfficientNetB0 using transfer learning.
-- Preprocess images for model prediction.
-- Apply Grad-CAM to visualize important image regions influencing predictions.
-- Develop an interactive web application using Streamlit.
+- Apply image preprocessing techniques.
+- Integrate Grad-CAM for model explainability.
+- Develop an interactive Streamlit application.
+- Display prediction results and heatmap visualizations.
 
-## Technologies Used
+## 4. Technologies Used
 
-- **Programming Language:** Python
-- **Deep Learning Framework:** TensorFlow and Keras
-- **Pre-trained Model:** EfficientNetB0
-- **Explainable AI:** Grad-CAM
-- **Web Framework:** Streamlit
-- **Image Processing:** Pillow, NumPy
-- **Development Environment:** VS Code
+| Technology | Purpose |
+|---|---|
+| Python | Programming language |
+| TensorFlow | Deep learning framework |
+| Keras | Model development |
+| EfficientNetB0 | Image feature extraction |
+| Grad-CAM | Explainable AI |
+| NumPy | Numerical operations |
+| Pillow | Image processing |
+| Streamlit | Web application |
 
-## Dataset
+## 5. Dataset
 
-**Dataset Name:** MICC-F2000
+**Dataset:** MICC-F2000
 
-The MICC-F2000 dataset is used for image forgery detection research and contains original and tampered images.
+The MICC-F2000 dataset is used for image forgery detection research. It contains original and tampered images, including copy-move forgery examples.
 
 The project uses original and forged image categories for model development and evaluation.
 
-Note: The dataset files are not included in this GitHub repository. Obtain the dataset from its authorized source and arrange the images according to the folder structure expected by the project.
+**Note:** Dataset images are not included in this repository. Users must obtain the dataset from an authorized source and arrange the images according to the directory structure expected by the project.
 
-## Model Architecture
+## 6. Model Architecture
 
-The project uses EfficientNetB0 as a feature extraction backbone.
+The project uses EfficientNetB0 with transfer learning.
 
-The classification architecture includes:
+The classification pipeline consists of:
 
-1. EfficientNetB0 for feature extraction.
-2. Global Average Pooling layer.
-3. Dropout layer.
-4. Dense layer with ReLU activation.
-5. Final sigmoid output layer for binary classification.
+1. Input image resizing to 256 × 256 pixels.
+2. EfficientNetB0 feature extraction.
+3. Global Average Pooling.
+4. Dropout layer.
+5. Dense layer with ReLU activation.
+6. Final sigmoid output layer for binary classification.
 
-The model predicts whether an input image belongs to the Real or Forged class.
+The model produces a prediction for one of two classes:
 
-## Grad-CAM Explainability
+- Real
+- Forged
 
-Grad-CAM is used to generate heatmaps that highlight image regions contributing to the model's prediction.
+## 7. Grad-CAM Explainability
 
-It helps users understand which areas influenced the classification result.
+Grad-CAM is used to generate heatmaps that highlight image regions influencing the model's prediction.
 
-**Note:** Grad-CAM provides visual explanations of model predictions. It does not generate an exact pixel-level forgery mask.
+It helps users understand which areas contributed to the classification result.
 
-## Project Structure
+**Note:** Grad-CAM provides a visual explanation of model predictions. It does not generate an exact pixel-level forgery mask.
+
+## 8. Project Structure
 
 ```text
 Explainable-Image-Forgery-Detection/
@@ -86,41 +100,41 @@ Explainable-Image-Forgery-Detection/
 └── .gitignore
 ```
 
-## Installation and Setup
+## 9. Installation and Setup
 
-### 1. Clone the repository
+### Step 1: Clone the repository
 
 ```bash
 git clone https://github.com/Bhuvana6303/Explainable-Image-Forgery-Detection.git
 ```
 
-### 2. Navigate to the project directory
+### Step 2: Navigate to the project directory
 
 ```bash
 cd Explainable-Image-Forgery-Detection
 ```
 
-### 3. Create a virtual environment
+### Step 3: Create a virtual environment
 
 ```bash
 python -m venv .venv
 ```
 
-### 4. Activate the virtual environment
+### Step 4: Activate the virtual environment
 
-Windows PowerShell:
+For Windows PowerShell:
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
 ```
 
-### 5. Install dependencies
+### Step 5: Install dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 6. Run the Streamlit application
+### Step 6: Run the Streamlit application
 
 ```bash
 python -m streamlit run web/app.py
@@ -128,32 +142,30 @@ python -m streamlit run web/app.py
 
 Open the local URL displayed in the terminal, usually:
 
-```text
-http://localhost:8501
-```
+`http://localhost:8501`
 
-## Application Features
+## 10. Application Features
 
 - Upload digital images.
-- Predict Real or Forged image categories.
-- Display classification results.
-- Generate Grad-CAM heatmap visualizations.
+- Classify images as Real or Forged.
+- Display prediction results.
+- Generate Grad-CAM heatmaps.
 - Interactive Streamlit interface.
 
-## Future Enhancements
+## 11. Future Enhancements
 
-- Improve model performance using a larger and more diverse dataset.
+- Improve model performance using larger and more diverse datasets.
 - Explore additional deep learning architectures.
-- Develop more precise image manipulation localization.
+- Develop more precise forgery localization techniques.
 - Deploy the application on a cloud platform.
-- Enhance model explainability.
+- Improve explainability and visualization techniques.
 
-## Author
+## 12. Author
 
 **Bhuvana Gundepalli**
 
 B.Tech – Computer Science and Engineering
 
-## GitHub Repository
+## 13. GitHub Repository
 
-https://github.com/Bhuvana6303/Explainable-Image-Forgery-Detection
+[Image Forgery Detection – GitHub](https://github.com/Bhuvana6303/Explainable-Image-Forgery-Detection)
